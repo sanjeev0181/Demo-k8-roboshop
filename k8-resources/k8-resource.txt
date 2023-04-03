@@ -71,10 +71,18 @@ install EFS drivers
 create storage class for EFS
 
 
+efs driver for eks
+---
+https://github.com/kubernetes-sigs/aws-efs-csi-driver
+kubectl apply -k "github.com/kubernetes-sigs/aws-efs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.5"
+
 pvc
 pod
 
+---
+efs size of aws
 
+-------
 life cycle policies
 ---
 retain --> even your pod deleted, kubernetes will make sure data will not be deleted.
