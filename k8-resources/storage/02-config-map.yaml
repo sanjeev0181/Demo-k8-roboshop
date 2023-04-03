@@ -72,7 +72,7 @@ spec:
   containers:
   - name: web
     imagePullPolicy: Always
-    image: techworldwithsiva/web:k8
+    image: sanjeev0181/web:k8
     volumeMounts:
     - name: nginx-config
       mountPath: /etc/nginx/nginx.conf

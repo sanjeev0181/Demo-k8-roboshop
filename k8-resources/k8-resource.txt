@@ -1,0 +1,46 @@
+replica set --> to maintain multiple pods,
+deployment
+1. everytime we need to delete the pod and recreate if we version comes up.
+
+deployment  --> replica set --> pod
+history of deployments
+rolling update --> slowly remove the old versionand install new version
+check the deployment status
+if wrong revert back to prevsion version
+
+damon set
+---
+
+volumes
+---
+emptyDir
+hostpath
+
+
+mounting config maps as volumes
+---
+1.create configmap for like nginx.conf
+2.mount them as volumes
+3.use it for containers.
+#https://stackoverflow.com/questions/64178370/custom-nginx-conf-from-configmap-in-kubernetes
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-conf
+data:
+  nginx.conf: |
+    user nginx;
+    worker_processes  1;
+    events {
+      worker_connections  10240;
+    }
+    http {
+      server {
+          listen       80;
+          server_name  localhost;
+          location / {
+            root   /usr/share/nginx/html; #Change this line
+            index  index.html index.htm;
+        }
+      }
+    }
