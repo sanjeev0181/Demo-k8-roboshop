@@ -1,4 +1,5 @@
 replica set --> to maintain multiple pods,
+
 deployment
 1. everytime we need to delete the pod and recreate if we version comes up.
 
@@ -13,10 +14,82 @@ damon set
 if you  run damonset it make sure one pod runs on each and every node.
 ----
 
-volumes
+volumes in side of k8
 ---
 emptyDir
 hostpath
+
+storage/volumes outside of k8
+---
+drive/external hard disk
+pv --> persistant volumes
+pvc --> persistant volumes claim
+
+static provisioning
+---
+you create the disk --> manual
+you need to have pv --> persistant volumes
+
+
+pv, pvc --> interfaces to deal with underlying storage
+
+we create the storage manually
+we will use pv to represent the storage
+we will claim storage to pod using pvc.
+
+dynamic provisioning
+---
+
+we dont create pv, we dont create storage
+everything will be handled by pvc.
+
+
+we will install drivers for example EBS.
+we will create storage class for EBS.
+
+drivers of ebs aws for eks
+https://github.com/kubernetes-sigs/aws-ebs-csi-driver 
+
+kubectl apply -k "github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.17"
+
+kubectl get pods -n kube-system
+
+storage class for ebs drivers
+https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/examples/kubernetes/dynamic-provisioning/manifests/storageclass.yaml
+
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ebs-sc
+provisioner: ebs.csi.aws.com
+volumeBindingMode: WaitForFirstConsumer
+
+step(ebs-static&ebs-dynamic fill add this step) :-
+add iam policies in eks-cluster  --> ec2fullaccess
+
+install EFS drivers
+create storage class for EFS
+
+
+pvc
+pod
+
+
+life cycle policies
+---
+retain --> even your pod deleted, kubernetes will make sure data will not be deleted.
+delete --> if pod deletes your data will be delete 
+recycle --> your disk is not deleted, but data is erased.
+
+Access modes
+---
+RWO(Read write once)  -->  multiple pods, only one pod is allowed to write, remaining pods for read.
+RWM(Read write many)  --> all pods can read/write.
+RO (read only)        --> only for reading the data
+
+EBS Static provisioning
+------
+if Ec2 is in one AZ,ebs also should be in same AZ.
 
 
 mounting config maps as volumes
