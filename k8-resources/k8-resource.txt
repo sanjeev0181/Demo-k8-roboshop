@@ -10,6 +10,8 @@ if wrong revert back to prevsion version
 
 damon set
 ---
+if you  run damonset it make sure one pod runs on each and every node.
+----
 
 volumes
 ---
@@ -44,3 +46,5 @@ data:
         }
       }
     }
+
+

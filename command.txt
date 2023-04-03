@@ -1,2 +1,4 @@
 #2 container exec commands
 kubectl exec simple-webapp -it -c sidecar-container -- sh
+
+kubectl logs nginx-filebeat -c filebeat
