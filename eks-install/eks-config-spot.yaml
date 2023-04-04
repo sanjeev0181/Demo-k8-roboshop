@@ -11,7 +11,7 @@ managedNodeGroups:
 - name: spot-1
   spot: true
   ssh:
-    publicKeyName: kubernetes
+    publicKeyName: tarun-mu
 
 
 #To create cluster with above config file.
