@@ -21,7 +21,7 @@
 
 
 
----
+# ---
 #https://eksctl.io/usage/creating-and-managing-clusters/
 
 # apiVersion: eksctl.io/v1alpha5
@@ -48,7 +48,7 @@
       # publicKeyPath: ajith-mumbai
 
 
----
+# ---
 
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
