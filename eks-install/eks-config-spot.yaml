@@ -71,7 +71,7 @@ metadata:
   name: my-eks-cluster
   region: ap-south-1
 
-nodeGroups:
+managedNodeGroups:
   - name: my-eks-node-group
     instanceType: t3.small
     desiredCapacity: 3
