@@ -50,16 +50,38 @@
 
 # ---
 
+# apiVersion: eksctl.io/v1alpha5
+# kind: ClusterConfig
+
+# metadata:
+#   name: nodes
+#   region: ap-south-1
+
+# managedNodeGroups:
+#   # `instanceTypes` defaults to [`t2.small`]
+#   - name: node-1
+#     spot: true
+#     ssh:
+#       publicKeyName: ajith-mumbai
+
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: nodes
+  name: my-eks-cluster
   region: ap-south-1
 
-managedNodeGroups:
-  # `instanceTypes` defaults to [`t2.small`]
-  - name: node-1
+nodeGroups:
+  - name: my-eks-node-group
+    instanceType: t3.small
+    desiredCapacity: 3
+    maxSize: 2
+    minSize: 1
     spot: true
+    # labels:
+    #   nodegroup-type: worker
+    # tags:
+    #   nodegroup-type: worker
     ssh:
+      allow: true
       publicKeyName: ajith-mumbai
