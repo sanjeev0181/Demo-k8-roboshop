@@ -34,7 +34,7 @@ metadata:
 nodeGroups:
   - name: ng-1
     instanceType: t2.small
-    spot: true
+    spot: "true"
     desiredCapacity: 10
     volumeSize: 30
     ssh:
