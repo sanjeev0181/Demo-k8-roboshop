@@ -12,7 +12,7 @@ managedNodeGroups:
   instanceType: t2.small
   spot: true
   ssh:
-    publicKeyName: tarun-mu
+    publicKeyName: ajith-mumbai
 
 
 #To create cluster with above config file.
