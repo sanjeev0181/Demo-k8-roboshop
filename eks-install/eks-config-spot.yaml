@@ -1,17 +1,18 @@
-# apiVersion: eksctl.io/v1alpha5
-# kind: ClusterConfig
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
 
-# metadata:
-#   name: spot-cluster
-#   region: ap-south-1
+metadata:
+  name: spot-cluster
+  region: ap-south-1
 
-# managedNodeGroups:
+managedNodeGroups:
 
-# # `instanceTypes` defaults to [`m5.large`]
-# - name: spot-1
-#   spot: true
-#   ssh:
-#     publicKeyName: tarun-mu
+# `instanceTypes` defaults to [`m5.large`]
+- name: spot-1
+  instanceType: t2.small
+  spot: true
+  ssh:
+    publicKeyName: tarun-mu
 
 
 #To create cluster with above config file.
@@ -64,24 +65,24 @@
 #     ssh:
 #       publicKeyName: ajith-mumbai
 
-apiVersion: eksctl.io/v1alpha5
-kind: ClusterConfig
+# apiVersion: eksctl.io/v1alpha5
+# kind: ClusterConfig
 
-metadata:
-  name: my-eks-cluster
-  region: ap-south-1
+# metadata:
+#   name: my-eks-cluster
+#   region: ap-south-1
 
-managedNodeGroups:
-  - name: my-eks-node-group
-    instanceType: t3.small
-    desiredCapacity: 3
-    maxSize: 2
-    minSize: 1
-    spot: true
-    # labels:
-    #   nodegroup-type: worker
-    # tags:
-    #   nodegroup-type: worker
-    ssh:
-      allow: true
-      publicKeyName: ajith-mumbai
+# managedNodeGroups:
+#   - name: my-eks-node-group
+#     instanceType: t3.small
+#     desiredCapacity: 3
+#     maxSize: 2
+#     minSize: 1
+#     spot: true
+#     # labels:
+#     #   nodegroup-type: worker
+#     # tags:
+#     #   nodegroup-type: worker
+#     ssh:
+#       allow: true
+#       publicKeyName: ajith-mumbai
